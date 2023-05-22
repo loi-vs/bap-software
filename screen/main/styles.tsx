@@ -6,15 +6,43 @@ const styles = StyleSheet.create({
       },
       headerContainer: {
         height: 60,
+        marginHorizontal: 20,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#F8F8F8',
       },
-      headerText: {
-        fontSize: 20,
-        fontWeight: 'bold',
+      headerIcon: {
+        flexDirection: 'row',
+        alignItems: 'center',
+
       },
+      storyContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+      },
+      storyCol: {
+        width: 62,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginHorizontal: 8
+      },
+      storyAvata: {
+        width: 56,
+        paddingBottom: 10,
+        borderRadius: 28,
+        borderColor: '#FBAA47',
+        borderWidth: 2,
+        borderStyle:'dashed',
+        aspectRatio: 1
+      },
+      storyName: {
+        textAlign:'center',
+        width: 50,
+        color: '#262626',
+        fontSize: 12,
+      },
+
       postContainer: {
         padding: 16,
         marginBottom: 20,
@@ -23,7 +51,15 @@ const styles = StyleSheet.create({
         fontSize: 18,
       },
       postHeader: {
+        flexDirection: 'row',
         padding: 10,
+        alignItems:'center',
+      },
+      avatar: {
+        width:56,
+        aspectRatio: 1,
+        borderRadius: 28,
+        marginRight: 8
       },
       username: {
         fontWeight: 'bold',

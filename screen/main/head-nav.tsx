@@ -1,13 +1,17 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import styles from "./styles";
 
 
 const NavigationHeader = () => {
   return (
     <View style={styles.headerContainer}>
-      <Image style={{ width: 10, }} source={{ uri: 'https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814055_960_720.png'}}/>
-      <Text style={styles.headerText}>Instagram</Text>
+      <Image resizeMode="contain" style={{}} source={require('./img/Camera-icon.png')}/>
+      <Image resizeMode="contain" style={{}} source={require('./img/Instagram-logo.png')}/>
+      <View style={styles.headerIcon}>
+        <Image resizeMode="contain" style={{marginRight: 5}} source={require('./img/IGTV.png')}/>
+        <Image resizeMode="contain" style={{}} source={require('./img/Messanger.png')}/>
+      </View>
     </View>
   );
 }
