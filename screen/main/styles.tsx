@@ -1,8 +1,30 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    // loginContainer: {
+    //   flex: 1,
+    // },
+    loginImage: {
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center'
+    },
+    text: {
+      color: 'white',
+      fontSize: 42,
+      lineHeight: 84,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      backgroundColor: '#000000c0',
+    },
+    input: {
+      height: 40,
+      margin: 12,
+      borderWidth: 1,
+      padding: 10,
+    },
     container: {
-        // flex: 0,
+        height: '100%',
       },
       headerContainer: {
         height: 60,
