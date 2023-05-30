@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     },
     container: {
         height: '100%',
+        flex: 1
       },
       headerContainer: {
         height: 60,
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#F8F8F8',
       },
       headerIcon: {
         flexDirection: 'row',
@@ -53,9 +53,7 @@ const styles = StyleSheet.create({
         width: 56,
         paddingBottom: 10,
         borderRadius: 28,
-        borderColor: '#FBAA47',
         borderWidth: 2,
-        borderStyle:'dashed',
         aspectRatio: 1
       },
       storyName: {
@@ -93,16 +91,17 @@ const styles = StyleSheet.create({
       caption: {
         padding: 10,
       },
-      bottomNavContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        height: 60,
-        borderTopWidth: 1,
-        borderTopColor: '#DDDDDD',
-      },
-      bottomNavText: {
-        fontSize: 16,
-      },
+      // bottomNavContainer: {
+      //   flexDirection: 'row',
+      //   justifyContent: 'space-around',
+      //   alignItems: 'center',
+      //   height: 60,
+      //   borderTopWidth: 1,
+      //   backgroundColor: '#F8F8F8',
+      //   borderTopColor: '#DDDDDD'
+      // },
+      // bottomNavText: {
+      //   fontSize: 16,
+      // },
 })
 export default styles

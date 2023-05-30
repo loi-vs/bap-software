@@ -1,23 +1,65 @@
 import React from "react";
 import styles from "./styles";
-import {View, Text, Image, Button, Alert} from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Text, Image, Button, Alert, TouchableOpacity } from "react-native";
+import Main from "./view-main";
+import Camera from "../camera/camera";
+import Detail from "../detail/detail";
+import Search from "../search/search";
 
+const Tab = createBottomTabNavigator();
 
 const NavigationBottom = () => {
-    return (
-      <View style={styles.bottomNavContainer}>
-        <Image resizeMode="contain" style={{}} source={require('./img/Home-icon.png')}/>
-        <Image resizeMode="contain" style={{}} source={require('./img/Search-icon.png')}/>
-        <Image resizeMode="contain" style={{}} source={require('./img/Add-icon.png')}/>
-        <Image resizeMode="contain" style={{}} source={require('./img/Heart-icon.png')}/>
-      </View>
-    );
-  };
+  return (
+    <Tab.Navigator 
+    initialRouteName="Main" 
+    screenOptions={{ tabBarActiveTintColor: '#e91e63', headerShown: false, tabBarStyle: { position: 'relative' }}}
+    detachInactiveScreens = {true}
+    >
+      <Tab.Screen
+        name="Main"
+        component={Main}
+        options={{
+          tabBarIcon: () => (
+            <Image resizeMode="contain" style={{}} source={require('./img/Home-icon.png')} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: () => (
+            <Image resizeMode="contain" style={{}} source={require('./img/Search-icon.png')} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Camera"
+        component={Camera}
+        options={{
+          tabBarIcon: () => (
+            <Image resizeMode="contain" style={{}} source={require('./img/Add-icon.png')} />
+          ),
+        }}
+      />
+      {/* <Tab.Screen
+        name="Detail"
+        component={Detail}
+        options={{
+          tabBarIcon: () => (
+            <Image resizeMode="contain" style={{}} source={require('./img/Heart-icon.png')} />
+          ),
+        }}
+      /> */}
+    </Tab.Navigator>
+  );
+};
 
 export default NavigationBottom
 
 
 
-{/* <Text style={styles.bottomNavText}>Home</Text>
-<Text style={styles.bottomNavText}>Explore</Text>
-<Text style={styles.bottomNavText}>Profile</Text> */}
+
+
+

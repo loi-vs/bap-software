@@ -1,97 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, View } from "react-native";
 import styles from "./styles";
 import NavigationHeader from "./head-nav";
-import Post from "./post";
+import PostTime from "./post-time";
 import Story from "./story";
 import NavigationBottom from "./bottom-nav";
+import Detail from "../detail/detail";
+import Camera from "../camera/camera";
+import { Post } from "../data/data-type";
 
+const Main = ({ navigation, route }: { navigation: any, route: any }) => {
+  // const { post } = route.params
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState<Post[]>([]);
+  const getPost = async () => {
+    try {
+      const response = await fetch('https://646ae5f27d3c1cae4ce2e250.mockapi.io/use');
+      const json = await response.json();
+      setData(json);
+    }
+    catch (error) {
+      console.error(error);
+    }
+    finally {
+      setLoading(false);
+    }
+  };
 
+  const loadRefresh = async () => {
+    await getPost();
+  };
+  const loadItem = async () => {
+    const response = await fetch('https://646ae5f27d3c1cae4ce2e250.mockapi.io/use');
+    const json = await response.json();
+    const loadData = [...data, ...json];
+    setData(loadData);
+  };
 
-const Main = ( {navigation}: {navigation: any}) => {
+  useEffect(() => {
+    getPost();
+  }, []);
   return (
     <View style={styles.container}>
       <NavigationHeader />
-      <ScrollView>
-          <Story />
-          <Post posts={{posts: posts}} callback={() => navigation.navigate('Login')} />
-      </ScrollView>
-      <NavigationBottom />
+      <View style= { styles.container }>
+        <Story data={data} />
+        <PostTime data={data} onRefresh={loadRefresh} callback={(item) => {
+          navigation.navigate('Detail', {item})
+        }} loadItem={loadItem} />
+      </View>
     </View>
   )
 }
 
 export default Main
 
-const posts = [
-  {
-    username: "Henry Purdy",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1001.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "1"
-  },
-  {
-    username: "Al Crona",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/29.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "2"
-  },
-  {
-    username: "Mrs. Wade Kshlerin",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1135.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "3"
-  },
-  {
-    username: "Cathy Berge",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/977.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "4"
-  },
-  {
-    username: "Ian Gislason",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "5"
-  },
-  {
-    username: "Antonio Lang",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/258.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "6"
-  },
-  {
-    username: "Timothy Conn",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/855.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "7"
-  },
-  {
-    username: "Mrs. Elmer Armstrong",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/18.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "8"
-  },
-  {
-    username: "Mrs. Bonnie Orn",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/201.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "9"
-  },
-  {
-    username: "Annette Brown",
-    caption: "Have nice day",
-    avatar: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/821.jpg",
-    imageUrl: "https://loremflickr.com/640/480/transport",
-    id: "10"
-  }
-];
