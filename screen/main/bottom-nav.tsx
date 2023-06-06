@@ -4,17 +4,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text, Image, Button, Alert, TouchableOpacity } from "react-native";
 import Main from "./view-main";
 import Camera from "../camera/camera";
-import Detail from "../detail/detail";
 import Search from "../search/search";
+import User from "../user/user";
 
 const Tab = createBottomTabNavigator();
 
 const NavigationBottom = () => {
   return (
-    <Tab.Navigator 
-    initialRouteName="Main" 
-    screenOptions={{ tabBarActiveTintColor: '#e91e63', headerShown: false, tabBarStyle: { position: 'relative' }}}
-    detachInactiveScreens = {true}
+    <Tab.Navigator
+      initialRouteName="Main"
+      screenOptions={{ tabBarActiveTintColor: '#e91e63', headerShown: false, tabBarStyle: { position: 'relative' } }}
+      detachInactiveScreens={true}
     >
       <Tab.Screen
         name="Main"
@@ -43,15 +43,15 @@ const NavigationBottom = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Detail"
-        component={Detail}
+      <Tab.Screen 
+        name="User" 
+        component={User}
         options={{
           tabBarIcon: () => (
             <Image resizeMode="contain" style={{}} source={require('./img/Heart-icon.png')} />
           ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };

@@ -4,11 +4,6 @@ const styles = StyleSheet.create({
     // loginContainer: {
     //   flex: 1,
     // },
-    loginImage: {
-      width: '100%',
-      height: '100%',
-      justifyContent: 'center'
-    },
     text: {
       color: 'white',
       fontSize: 42,
